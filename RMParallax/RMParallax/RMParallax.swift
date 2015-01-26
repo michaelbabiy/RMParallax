@@ -1,4 +1,4 @@
-// RMParallax.h
+// RMParallax
 //
 // Copyright (c) 2015 RMParallax
 //
@@ -58,7 +58,7 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
     *  Designated initializer.
     *
     *  @param items  - an array of RMParallaxItems to page through.
-    *  @param motion - if set to YES, a very subtle motion effect will be added to the image view.
+    *  @param motion - if set to TRUE, a very subtle motion effect will be added to the image view.
     */
     required init(items: [RMParallaxItem], motion: Bool) {
         super.init(nibName: nil, bundle: nil)

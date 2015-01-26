@@ -1,4 +1,4 @@
-// RMParallax.h
+// RMParallax
 //
 // Copyright (c) 2015 RMParallax
 //
