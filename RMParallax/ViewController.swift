@@ -27,6 +27,7 @@ class ViewController: UIViewController {
         // Adding parallax view controller.
         self.addChildViewController(rmParallaxViewController)
         self.view.addSubview(rmParallaxViewController.view)
+        rmParallaxViewController.didMoveToParentViewController(self)
     }
 
     override func prefersStatusBarHidden() -> Bool {
