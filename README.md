@@ -3,6 +3,8 @@ The way to impress users on the first app launch.
 
 Created by Raphael Miller and Michael Babiy.
 
+See RMParallax in action: https://www.youtube.com/watch?v=5QRMohq1nBE
+
 If you are looking for a nice way to introduce the features of your app, this control is for you. In addition to paging through images with a nice parallax effect, RMParallax also creates a nice transition for your "description" text. As an added bonus, you can also add motion effect to your pages by simply setting motion:true.
 
 RMParallax is simple to use. All you have to do is create RMParallaxItem:
