@@ -7,7 +7,7 @@ If you are looking for a nice way to introduce the features of your app, this co
 
 RMParallax is simple to use. All you have to do is create RMParallaxItem:
 
-```
+```swift
 let item1 = RMParallaxItem(image: UIImage(named: "item1")!, text: "SHARE LIGHTBOXES WITH YOUR TEAM")
 let item2 = RMParallaxItem(image: UIImage(named: "item2")!, text: "FOLLOW WORLD CLASS PHOTOGRAPHERS")
 let item3 = RMParallaxItem(image: UIImage(named: "item3")!, text: "EXPLORE OUR COLLECTION BY CATEGORY")
@@ -15,7 +15,7 @@ let item3 = RMParallaxItem(image: UIImage(named: "item3")!, text: "EXPLORE OUR C
 
 Create RMParallax controller with items you created earlier:
 
-```
+```swift
 let rmParallaxViewController = RMParallax(items: [item1, item2, item3], motion: false)
         rmParallaxViewController.completionHandler = {
             UIView.animateWithDuration(0.4, animations: { () -> Void in
@@ -26,7 +26,7 @@ let rmParallaxViewController = RMParallax(items: [item1, item2, item3], motion: 
 
 Add your RMParallax controller to the view controller:
 
-```
+```swift
 // Adding parallax view controller.
         self.addChildViewController(rmParallaxViewController)
         self.view.addSubview(rmParallaxViewController.view)
