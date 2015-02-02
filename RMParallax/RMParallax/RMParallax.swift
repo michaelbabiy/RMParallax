@@ -159,15 +159,26 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
     // MARK : UIScrollViewDelegate
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        let internalScrollView = scrollView.viewWithTag((self.currentPageNumber + 1) * 10) as UIScrollView
-        let otherScrollView = scrollView.viewWithTag((self.otherPageNumber + 1) * 10) as UIScrollView
-        let internalTextScrollView = scrollView.viewWithTag((self.currentPageNumber + 1) * 100) as UIScrollView
-        let otherTextScrollView = scrollView.viewWithTag((self.otherPageNumber + 1) * 100) as UIScrollView
+        let internalScrollView = scrollView.viewWithTag((self.currentPageNumber + 1) * 10) as? UIScrollView
+        let otherScrollView = scrollView.viewWithTag((self.otherPageNumber + 1) * 10) as? UIScrollView
+        let internalTextScrollView = scrollView.viewWithTag((self.currentPageNumber + 1) * 100) as? UIScrollView
+        let otherTextScrollView = scrollView.viewWithTag((self.otherPageNumber + 1) * 100) as? UIScrollView
         
-        internalScrollView.contentOffset = CGPointMake(0.0, 0.0)
-        otherScrollView.contentOffset = CGPointMake(0.0, 0.0)
-        internalTextScrollView.contentOffset = CGPointMake(0.0, 0.0)
-        otherTextScrollView.contentOffset = CGPointMake(0.0, 0.0)
+        if let internalScrollView = internalScrollView {
+            internalScrollView.contentOffset = CGPointMake(0.0, 0.0)
+        }
+        
+        if let otherScrollView = otherScrollView {
+            otherScrollView.contentOffset = CGPointMake(0.0, 0.0)
+        }
+        
+        if let internalTextScrollView = internalTextScrollView {
+            internalTextScrollView.contentOffset = CGPointMake(0.0, 0.0)
+        }
+        
+        if let otherTextScrollView = otherTextScrollView {
+            otherTextScrollView.contentOffset = CGPointMake(0.0, 0.0)
+        }
         
         self.currentPageNumber = Int(scrollView.contentOffset.x) / Int(scrollView.frame.size.width)
     }
@@ -191,15 +202,27 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
         self.lastContentOffset = scrollView.contentOffset.x
         
         let offset: CGFloat = scrollView.contentOffset.x
-        let internalScrollView = scrollView.viewWithTag((self.currentPageNumber + 1) * 10) as UIScrollView
-        let otherScrollView = scrollView.viewWithTag((self.otherPageNumber + 1) * 10) as UIScrollView
-        let internalTextScrollView = scrollView.viewWithTag((self.currentPageNumber + 1) * 100) as UIScrollView
-        let otherTextScrollView = scrollView.viewWithTag((self.otherPageNumber + 1) * 100) as UIScrollView
+        let internalScrollView = scrollView.viewWithTag((self.currentPageNumber + 1) * 10) as? UIScrollView
+        let otherScrollView = scrollView.viewWithTag((self.otherPageNumber + 1) * 10) as? UIScrollView
+        let internalTextScrollView = scrollView.viewWithTag((self.currentPageNumber + 1) * 100) as? UIScrollView
+        let otherTextScrollView = scrollView.viewWithTag((self.otherPageNumber + 1) * 100) as? UIScrollView
+        
+        if let internalScrollView = internalScrollView {
+            internalScrollView.contentOffset = CGPointMake(-rm_percentage_multiplier * (offset - (self.viewWidth * CGFloat(self.currentPageNumber))), 0.0)
+        }
+        
+        if let otherScrollView = otherScrollView {
+            otherScrollView.contentOffset = CGPointMake(multiplier * rm_percentage_multiplier * self.viewWidth - (rm_percentage_multiplier * (offset - (self.viewWidth * CGFloat(self.currentPageNumber)))), 0.0)
+        }
 
-        internalScrollView.contentOffset = CGPointMake(-rm_percentage_multiplier * (offset - (self.viewWidth * CGFloat(self.currentPageNumber))), 0.0)
-        otherScrollView.contentOffset = CGPointMake(multiplier * rm_percentage_multiplier * self.viewWidth - (rm_percentage_multiplier * (offset - (self.viewWidth * CGFloat(self.currentPageNumber)))), 0.0)
-        internalTextScrollView.contentOffset = CGPointMake(-rm_percentage_multiplier_text * (offset - (self.viewWidth * CGFloat(self.currentPageNumber))), 0.0)
-        otherTextScrollView.contentOffset = CGPointMake(multiplier * rm_percentage_multiplier_text * self.viewWidth - (rm_percentage_multiplier_text * (offset - (self.viewWidth * CGFloat(self.currentPageNumber)))), 0.0)
+        if let internalTextScrollView = internalTextScrollView {
+            internalTextScrollView.contentOffset = CGPointMake(-rm_percentage_multiplier_text * (offset - (self.viewWidth * CGFloat(self.currentPageNumber))), 0.0)
+        }
+        
+        if let otherTextScrollView = otherTextScrollView {
+            otherTextScrollView.contentOffset = CGPointMake(multiplier * rm_percentage_multiplier_text * self.viewWidth - (rm_percentage_multiplier_text * (offset - (self.viewWidth * CGFloat(self.currentPageNumber)))), 0.0)
+        }
+        
     }
     
     // MARK : Motion Effects
