@@ -39,6 +39,9 @@ RMParallax uses closures to notify presenting view controller when the user is d
 
 Please checkout included sample project. 
 
-Special thanks to the team at Getty Images whom I greatly respect.
+Thanks to the team at Getty Images whom I greatly respect.
+
+Special thanks to contributors:
+sgxiang - Fix error #3.
 
 Thanks.
