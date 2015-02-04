@@ -187,21 +187,36 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
         var direction: ScrollDirection!
         var multiplier: CGFloat = 1.0
         
+        let offset: CGFloat = scrollView.contentOffset.x
+
         if self.lastContentOffset > scrollView.contentOffset.x {
             direction = .Right
+            
             if self.currentPageNumber > 0 {
-                self.otherPageNumber = self.currentPageNumber - 1
-            }; multiplier = -1.0
+                if offset >  CGFloat(self.currentPageNumber - 1) * viewWidth{
+                    self.otherPageNumber = self.currentPageNumber + 1
+                    multiplier = 1.0
+                }else{
+                    self.otherPageNumber = self.currentPageNumber - 1
+                    multiplier = -1.0
+                }
+            }
+            
         } else if self.lastContentOffset < scrollView.contentOffset.x {
             direction = .Left
-            if self.currentPageNumber < self.items.count {
+            
+            if offset <  CGFloat(self.currentPageNumber - 1) * viewWidth{
+                self.otherPageNumber = self.currentPageNumber - 1
+                multiplier = -1.0
+            }else{
                 self.otherPageNumber = self.currentPageNumber + 1
-            }; multiplier = 1.0
+                multiplier = 1.0
+            }
+            
         }
         
         self.lastContentOffset = scrollView.contentOffset.x
         
-        let offset: CGFloat = scrollView.contentOffset.x
         let internalScrollView = scrollView.viewWithTag((self.currentPageNumber + 1) * 10) as? UIScrollView
         let otherScrollView = scrollView.viewWithTag((self.otherPageNumber + 1) * 10) as? UIScrollView
         let internalTextScrollView = scrollView.viewWithTag((self.currentPageNumber + 1) * 100) as? UIScrollView
