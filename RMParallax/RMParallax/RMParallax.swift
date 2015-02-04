@@ -196,7 +196,7 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
                 if offset >  CGFloat(self.currentPageNumber - 1) * viewWidth{
                     self.otherPageNumber = self.currentPageNumber + 1
                     multiplier = 1.0
-                }else{
+                } else {
                     self.otherPageNumber = self.currentPageNumber - 1
                     multiplier = -1.0
                 }
@@ -208,11 +208,10 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
             if offset <  CGFloat(self.currentPageNumber - 1) * viewWidth{
                 self.otherPageNumber = self.currentPageNumber - 1
                 multiplier = -1.0
-            }else{
+            } else {
                 self.otherPageNumber = self.currentPageNumber + 1
                 multiplier = 1.0
             }
-            
         }
         
         self.lastContentOffset = scrollView.contentOffset.x
