@@ -50,7 +50,6 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
     var dismissButton: UIButton!
     
     var currentPageNumber = 0
-    var otherPageNumber = 0
     var viewWidth: CGFloat = 0.0
     var lastContentOffset: CGFloat = 0.0
     
@@ -159,34 +158,24 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
     // MARK : UIScrollViewDelegate
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        let internalScrollView = scrollView.viewWithTag((self.currentPageNumber + 1) * 10) as? UIScrollView
-        let otherScrollView = scrollView.viewWithTag((self.otherPageNumber + 1) * 10) as? UIScrollView
-        let internalTextScrollView = scrollView.viewWithTag((self.currentPageNumber + 1) * 100) as? UIScrollView
-        let otherTextScrollView = scrollView.viewWithTag((self.otherPageNumber + 1) * 100) as? UIScrollView
         
-        if let internalScrollView = internalScrollView {
-            internalScrollView.contentOffset = CGPointMake(0.0, 0.0)
-        }
-        
-        if let otherScrollView = otherScrollView {
-            otherScrollView.contentOffset = CGPointMake(0.0, 0.0)
-        }
-        
-        if let internalTextScrollView = internalTextScrollView {
-            internalTextScrollView.contentOffset = CGPointMake(0.0, 0.0)
-        }
-        
-        if let otherTextScrollView = otherTextScrollView {
-            otherTextScrollView.contentOffset = CGPointMake(0.0, 0.0)
+        for index in 0..<self.items.count{
+            
+            let scrollView = scrollView.viewWithTag((index + 1) * 10) as? UIScrollView
+            let textScrollView = scrollView?.viewWithTag((1 + index) * 100) as? UIScrollView
+            scrollView?.contentOffset = CGPointZero
+            textScrollView?.contentOffset = CGPointZero
+            
         }
         
         self.currentPageNumber = Int(scrollView.contentOffset.x) / Int(scrollView.frame.size.width)
+        
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         var direction: ScrollDirection!
         var multiplier: CGFloat = 1.0
-        
+        var otherPageNumber = 0
         let offset: CGFloat = scrollView.contentOffset.x
 
         if self.lastContentOffset > scrollView.contentOffset.x {
@@ -194,10 +183,10 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
             
             if self.currentPageNumber > 0 {
                 if offset >  CGFloat(self.currentPageNumber - 1) * viewWidth{
-                    self.otherPageNumber = self.currentPageNumber + 1
+                    otherPageNumber = self.currentPageNumber + 1
                     multiplier = 1.0
                 } else {
-                    self.otherPageNumber = self.currentPageNumber - 1
+                    otherPageNumber = self.currentPageNumber - 1
                     multiplier = -1.0
                 }
             }
@@ -206,10 +195,10 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
             direction = .Left
             
             if offset <  CGFloat(self.currentPageNumber - 1) * viewWidth{
-                self.otherPageNumber = self.currentPageNumber - 1
+                otherPageNumber = self.currentPageNumber - 1
                 multiplier = -1.0
             } else {
-                self.otherPageNumber = self.currentPageNumber + 1
+                otherPageNumber = self.currentPageNumber + 1
                 multiplier = 1.0
             }
         }
@@ -217,25 +206,18 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
         self.lastContentOffset = scrollView.contentOffset.x
         
         let internalScrollView = scrollView.viewWithTag((self.currentPageNumber + 1) * 10) as? UIScrollView
-        let otherScrollView = scrollView.viewWithTag((self.otherPageNumber + 1) * 10) as? UIScrollView
+        let otherScrollView = scrollView.viewWithTag((otherPageNumber + 1) * 10) as? UIScrollView
         let internalTextScrollView = scrollView.viewWithTag((self.currentPageNumber + 1) * 100) as? UIScrollView
-        let otherTextScrollView = scrollView.viewWithTag((self.otherPageNumber + 1) * 100) as? UIScrollView
+        let otherTextScrollView = scrollView.viewWithTag((otherPageNumber + 1) * 100) as? UIScrollView
         
-        if let internalScrollView = internalScrollView {
-            internalScrollView.contentOffset = CGPointMake(-rm_percentage_multiplier * (offset - (self.viewWidth * CGFloat(self.currentPageNumber))), 0.0)
-        }
-        
-        if let otherScrollView = otherScrollView {
-            otherScrollView.contentOffset = CGPointMake(multiplier * rm_percentage_multiplier * self.viewWidth - (rm_percentage_multiplier * (offset - (self.viewWidth * CGFloat(self.currentPageNumber)))), 0.0)
-        }
+        internalScrollView?.contentOffset = CGPointMake(-rm_percentage_multiplier * (offset - (self.viewWidth * CGFloat(self.currentPageNumber))), 0.0)
 
-        if let internalTextScrollView = internalTextScrollView {
-            internalTextScrollView.contentOffset = CGPointMake(-rm_percentage_multiplier_text * (offset - (self.viewWidth * CGFloat(self.currentPageNumber))), 0.0)
-        }
+        otherScrollView?.contentOffset = CGPointMake(multiplier * rm_percentage_multiplier * self.viewWidth - (rm_percentage_multiplier * (offset - (self.viewWidth * CGFloat(self.currentPageNumber)))), 0.0)
+
+    
+        internalTextScrollView?.contentOffset = CGPointMake(-rm_percentage_multiplier_text * (offset - (self.viewWidth * CGFloat(self.currentPageNumber))), 0.0)
         
-        if let otherTextScrollView = otherTextScrollView {
-            otherTextScrollView.contentOffset = CGPointMake(multiplier * rm_percentage_multiplier_text * self.viewWidth - (rm_percentage_multiplier_text * (offset - (self.viewWidth * CGFloat(self.currentPageNumber)))), 0.0)
-        }
+        otherTextScrollView?.contentOffset = CGPointMake(multiplier * rm_percentage_multiplier_text * self.viewWidth - (rm_percentage_multiplier_text * (offset - (self.viewWidth * CGFloat(self.currentPageNumber)))), 0.0)
         
     }
     
