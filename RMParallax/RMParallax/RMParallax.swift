@@ -95,6 +95,7 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
         self.view.addSubview(self.scrollView)
         self.view.insertSubview(self.dismissButton, aboveSubview: self.scrollView)
         
+        self.items.append(RMParallaxItem(image: UIImage(named: "transparency")!, text: ""))
         for (index, item) in enumerate(self.items) {
             let diff: CGFloat = 0.0
             let frame = CGRectMake((self.view.frame.size.width * CGFloat(index)), 0.0, self.viewWidth, self.view.frame.size.height)
@@ -181,6 +182,10 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
         }
         
         self.currentPageNumber = Int(scrollView.contentOffset.x) / Int(scrollView.frame.size.width)
+        
+        if self.currentPageNumber == self.items.count - 1 {
+            self.completionHandler()
+        }
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
