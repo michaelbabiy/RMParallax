@@ -74,6 +74,9 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Hide the Navigation Bar if needed. 
+        self.parentViewController?.navigationController?.navigationBar.hidden = true
         self.setupRMParallax()
     }
     
@@ -154,6 +157,8 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
     
     func closeButtonSelected(sender: UIButton) {
         self.completionHandler()
+        
+        self.parentViewController?.navigationController?.navigationBar.hidden = false
     }
     
     // MARK : UIScrollViewDelegate
