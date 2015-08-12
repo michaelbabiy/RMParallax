@@ -184,6 +184,7 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.currentPageNumber = Int(scrollView.contentOffset.x) / Int(scrollView.frame.size.width)
         var direction: ScrollDirection!
         var multiplier: CGFloat = 1.0
         
