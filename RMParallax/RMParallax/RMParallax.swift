@@ -66,7 +66,7 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
         self.motion = motion
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("Use init with items, motion.")
     }
     
@@ -95,7 +95,7 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
         self.view.addSubview(self.scrollView)
         self.view.insertSubview(self.dismissButton, aboveSubview: self.scrollView)
         
-        for (index, item) in enumerate(self.items) {
+        for (index, item) in self.items.enumerate() {
             let diff: CGFloat = 0.0
             let frame = CGRectMake((self.view.frame.size.width * CGFloat(index)), 0.0, self.viewWidth, self.view.frame.size.height)
             let subview = UIView(frame: frame)
@@ -184,14 +184,11 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        var direction: ScrollDirection!
         var multiplier: CGFloat = 1.0
         
         let offset: CGFloat = scrollView.contentOffset.x
 
         if self.lastContentOffset > scrollView.contentOffset.x {
-            direction = .Right
-            
             if self.currentPageNumber > 0 {
                 if offset >  CGFloat(self.currentPageNumber - 1) * viewWidth{
                     self.otherPageNumber = self.currentPageNumber + 1
@@ -203,8 +200,6 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
             }
             
         } else if self.lastContentOffset < scrollView.contentOffset.x {
-            direction = .Left
-            
             if offset <  CGFloat(self.currentPageNumber - 1) * viewWidth{
                 self.otherPageNumber = self.currentPageNumber - 1
                 multiplier = -1.0
