@@ -82,7 +82,7 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
     func setupRMParallax() {
         self.dismissButton = UIButton(frame: CGRectMake(self.view.frame.size.width / 2.0 - 11.5, self.view.frame.size.height - 20.0 - 11.5, 23.0, 23.0))
         self.dismissButton.setImage(UIImage(named: "close_button"), forState: UIControlState.Normal)
-        self.dismissButton.addTarget(self, action: "closeButtonSelected:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.dismissButton.addTarget(self, action: #selector(RMParallax.closeButtonSelected(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.scrollView = UIScrollView(frame: self.view.frame)
         self.scrollView.showsHorizontalScrollIndicator = false;
