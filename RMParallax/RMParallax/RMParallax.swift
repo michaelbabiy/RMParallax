@@ -27,8 +27,9 @@
 */
 typealias RMParallaxCompletionHandler = () -> Void
 
-enum ScrollDirection: Int {
-    case Right = 0, Left
+enum ScrollDirection: Int
+{
+    case right = 0, left
 }
 
 let rm_text_span_width: CGFloat = 320.0
@@ -40,8 +41,8 @@ let rm_motion_magnitude: CGFloat = rm_motion_frame_offset / 3.0
 
 import UIKit
 
-class RMParallax : UIViewController, UIScrollViewDelegate {
-    
+class RMParallax : UIViewController, UIScrollViewDelegate
+{
     var completionHandler: RMParallaxCompletionHandler!
     var items: [RMParallaxItem]!
     var motion = false
@@ -60,33 +61,37 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
     *  @param items  - an array of RMParallaxItems to page through.
     *  @param motion - if set to TRUE, a very subtle motion effect will be added to the image view.
     */
-    required init(items: [RMParallaxItem], motion: Bool) {
+    required init(items: [RMParallaxItem], motion: Bool)
+    {
         super.init(nibName: nil, bundle: nil)
         self.items = items
         self.motion = motion
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder)
+    {
         fatalError("Use init with items, motion.")
     }
     
     // MARK : Life Cycle
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         self.setupRMParallax()
     }
     
     // MARK : Setup
     
-    func setupRMParallax() {
-        self.dismissButton = UIButton(frame: CGRectMake(self.view.frame.size.width / 2.0 - 11.5, self.view.frame.size.height - 20.0 - 11.5, 23.0, 23.0))
-        self.dismissButton.setImage(UIImage(named: "close_button"), forState: UIControlState.Normal)
-        self.dismissButton.addTarget(self, action: #selector(RMParallax.closeButtonSelected(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+    func setupRMParallax()
+    {
+        self.dismissButton = UIButton(frame: CGRect(x: self.view.frame.size.width / 2.0 - 11.5, y: self.view.frame.size.height - 20.0 - 11.5, width: 23.0, height: 23.0))
+        self.dismissButton.setImage(UIImage(named: "close_button"), for: UIControlState())
+        self.dismissButton.addTarget(self, action: #selector(RMParallax.closeButtonSelected(_:)), for: UIControlEvents.touchUpInside)
         
         self.scrollView = UIScrollView(frame: self.view.frame)
         self.scrollView.showsHorizontalScrollIndicator = false;
-        self.scrollView.pagingEnabled = true;
+        self.scrollView.isPagingEnabled = true;
         self.scrollView.delegate = self;
         self.scrollView.bounces = false;
         
@@ -95,51 +100,51 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
         self.view.addSubview(self.scrollView)
         self.view.insertSubview(self.dismissButton, aboveSubview: self.scrollView)
         
-        for (index, item) in self.items.enumerate() {
+        for (index, item) in self.items.enumerated() {
             let diff: CGFloat = 0.0
-            let frame = CGRectMake((self.view.frame.size.width * CGFloat(index)), 0.0, self.viewWidth, self.view.frame.size.height)
+            let frame = CGRect(x: (self.view.frame.size.width * CGFloat(index)), y: 0.0, width: self.viewWidth, height: self.view.frame.size.height)
             let subview = UIView(frame: frame)
             
-            let internalScrollView = UIScrollView(frame: CGRectMake(diff, 0.0, self.viewWidth - (diff * 2.0), self.view.frame.size.height))
-            internalScrollView.scrollEnabled = false
+            let internalScrollView = UIScrollView(frame: CGRect(x: diff, y: 0.0, width: self.viewWidth - (diff * 2.0), height: self.view.frame.size.height))
+            internalScrollView.isScrollEnabled = false
             
-            let internalTextScrollView = UIScrollView(frame: CGRectMake(diff, 0.0, self.viewWidth - (diff * 2.0), self.view.frame.size.height))
-            internalTextScrollView.scrollEnabled = false
-            internalTextScrollView.backgroundColor = UIColor.clearColor()
+            let internalTextScrollView = UIScrollView(frame: CGRect(x: diff, y: 0.0, width: self.viewWidth - (diff * 2.0), height: self.view.frame.size.height))
+            internalTextScrollView.isScrollEnabled = false
+            internalTextScrollView.backgroundColor = UIColor.clear()
             
             //
             
             let imageViewFrame = self.motion ?
-                CGRectMake(0.0, 0.0, internalScrollView.frame.size.width + rm_motion_frame_offset, self.view.frame.size.height + rm_motion_frame_offset) :
-                CGRectMake(0.0, 0.0, internalScrollView.frame.size.width, self.view.frame.size.height)
+                CGRect(x: 0.0, y: 0.0, width: internalScrollView.frame.size.width + rm_motion_frame_offset, height: self.view.frame.size.height + rm_motion_frame_offset) :
+                CGRect(x: 0.0, y: 0.0, width: internalScrollView.frame.size.width, height: self.view.frame.size.height)
             let imageView = UIImageView(frame: imageViewFrame)
             if self.motion { self.addMotionEffectToView(imageView, magnitude: rm_motion_magnitude) }
-            imageView.contentMode = UIViewContentMode.ScaleAspectFill
+            imageView.contentMode = UIViewContentMode.scaleAspectFill
             internalScrollView.tag = (index + 1) * 10
             internalTextScrollView.tag = (index + 1) * 100
             imageView.tag = (index + 1) * 1000
             
             //
             
-            let attributes = [NSFontAttributeName : UIFont.systemFontOfSize(30.0)]
+            let attributes = [NSFontAttributeName : UIFont.systemFont(ofSize: 30.0)]
             let context = NSStringDrawingContext()
-            let rect = (item.text as NSString).boundingRectWithSize(CGSizeMake(rm_text_span_width, CGFloat.max),
-                options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+            let rect = (item.text as NSString).boundingRect(with: CGSize(width: rm_text_span_width, height: CGFloat.greatestFiniteMagnitude),
+                options: NSStringDrawingOptions.usesLineFragmentOrigin,
                 attributes: attributes,
                 context: context)
             
             //
             
-            let textView = UITextView(frame: CGRectMake(5.0, self.view.frame.size.height / 2.0, rect.size.width, rect.size.height))
+            let textView = UITextView(frame: CGRect(x: 5.0, y: self.view.frame.size.height / 2.0, width: rect.size.width, height: rect.size.height))
             textView.text = item.text
-            textView.textColor = UIColor.whiteColor()
-            textView.backgroundColor = UIColor.clearColor()
-            textView.userInteractionEnabled = false
+            textView.textColor = UIColor.white()
+            textView.backgroundColor = UIColor.clear()
+            textView.isUserInteractionEnabled = false
             imageView.image = item.image
-            textView.font = UIFont.systemFontOfSize(25.0)
+            textView.font = UIFont.systemFont(ofSize: 25.0)
 
             internalTextScrollView.addSubview(textView)
-            internalScrollView.bringSubviewToFront(textView)
+            internalScrollView.bringSubview(toFront: textView)
             
             internalScrollView.addSubview(imageView)
             internalScrollView.addSubview(internalTextScrollView)
@@ -147,43 +152,46 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
             subview.addSubview(internalScrollView)
             self.scrollView.addSubview(subview)
         }
-        self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width * CGFloat(self.items.count), self.view.frame.size.height)
+        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width * CGFloat(self.items.count), height: self.view.frame.size.height)
     }
     
     // MARK : Action Functions
     
-    func closeButtonSelected(sender: UIButton) {
+    func closeButtonSelected(_ sender: UIButton)
+    {
         self.completionHandler()
     }
     
     // MARK : UIScrollViewDelegate
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
+    {
         let internalScrollView = scrollView.viewWithTag((self.currentPageNumber + 1) * 10) as? UIScrollView
         let otherScrollView = scrollView.viewWithTag((self.otherPageNumber + 1) * 10) as? UIScrollView
         let internalTextScrollView = scrollView.viewWithTag((self.currentPageNumber + 1) * 100) as? UIScrollView
         let otherTextScrollView = scrollView.viewWithTag((self.otherPageNumber + 1) * 100) as? UIScrollView
         
         if let internalScrollView = internalScrollView {
-            internalScrollView.contentOffset = CGPointMake(0.0, 0.0)
+            internalScrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
         }
         
         if let otherScrollView = otherScrollView {
-            otherScrollView.contentOffset = CGPointMake(0.0, 0.0)
+            otherScrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
         }
         
         if let internalTextScrollView = internalTextScrollView {
-            internalTextScrollView.contentOffset = CGPointMake(0.0, 0.0)
+            internalTextScrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
         }
         
         if let otherTextScrollView = otherTextScrollView {
-            otherTextScrollView.contentOffset = CGPointMake(0.0, 0.0)
+            otherTextScrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
         }
         
         self.currentPageNumber = Int(scrollView.contentOffset.x) / Int(scrollView.frame.size.width)
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView)
+    {
         var multiplier: CGFloat = 1.0
         
         let offset: CGFloat = scrollView.contentOffset.x
@@ -217,28 +225,33 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
         let otherTextScrollView = scrollView.viewWithTag((self.otherPageNumber + 1) * 100) as? UIScrollView
         
         if let internalScrollView = internalScrollView {
-            internalScrollView.contentOffset = CGPointMake(-rm_percentage_multiplier * (offset - (self.viewWidth * CGFloat(self.currentPageNumber))), 0.0)
+            internalScrollView.contentOffset = CGPoint(x: -rm_percentage_multiplier * (offset - (self.viewWidth * CGFloat(self.currentPageNumber))), y: 0.0)
         }
         
         if let otherScrollView = otherScrollView {
-            otherScrollView.contentOffset = CGPointMake(multiplier * rm_percentage_multiplier * self.viewWidth - (rm_percentage_multiplier * (offset - (self.viewWidth * CGFloat(self.currentPageNumber)))), 0.0)
+            let x: CGFloat = multiplier * rm_percentage_multiplier * self.viewWidth - (rm_percentage_multiplier * (offset - (self.viewWidth * CGFloat(self.currentPageNumber))))
+            let y: CGFloat = 0.0
+            otherScrollView.contentOffset = CGPoint(x: x, y: y)
         }
 
         if let internalTextScrollView = internalTextScrollView {
-            internalTextScrollView.contentOffset = CGPointMake(-rm_percentage_multiplier_text * (offset - (self.viewWidth * CGFloat(self.currentPageNumber))), 0.0)
+            internalTextScrollView.contentOffset = CGPoint(x: -rm_percentage_multiplier_text * (offset - (self.viewWidth * CGFloat(self.currentPageNumber))), y: 0.0)
         }
         
         if let otherTextScrollView = otherTextScrollView {
-            otherTextScrollView.contentOffset = CGPointMake(multiplier * rm_percentage_multiplier_text * self.viewWidth - (rm_percentage_multiplier_text * (offset - (self.viewWidth * CGFloat(self.currentPageNumber)))), 0.0)
+            let x: CGFloat = multiplier * rm_percentage_multiplier_text * self.viewWidth - (rm_percentage_multiplier_text * (offset - (self.viewWidth * CGFloat(self.currentPageNumber))))
+            let y: CGFloat = 0.0
+            otherTextScrollView.contentOffset = CGPoint(x: x, y: y)
         }
         
     }
     
     // MARK : Motion Effects
     
-    func addMotionEffectToView(view: UIView, magnitude: CGFloat) -> Void {
-        let xMotion = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
-        let yMotion = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.TiltAlongVerticalAxis)
+    func addMotionEffectToView(_ view: UIView, magnitude: CGFloat) -> Void
+    {
+        let xMotion = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.tiltAlongHorizontalAxis)
+        let yMotion = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.tiltAlongVerticalAxis)
         xMotion.minimumRelativeValue = (-magnitude)
         xMotion.maximumRelativeValue = (magnitude)
         yMotion.minimumRelativeValue = (-magnitude)

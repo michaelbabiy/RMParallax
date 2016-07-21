@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
+class ViewController: UIViewController
+{
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         let item1 = RMParallaxItem(image: UIImage(named: "item1")!, text: "SHARE LIGHTBOXES WITH YOUR TEAM")
@@ -19,7 +20,7 @@ class ViewController: UIViewController {
         
         let rmParallaxViewController = RMParallax(items: [item1, item2, item3], motion: false)
         rmParallaxViewController.completionHandler = {
-            UIView.animateWithDuration(0.4, animations: { () -> Void in
+            UIView.animate(withDuration: 0.4, animations: { () -> Void in
                 rmParallaxViewController.view.alpha = 0.0
             })
         }
@@ -27,12 +28,12 @@ class ViewController: UIViewController {
         // Adding parallax view controller.
         self.addChildViewController(rmParallaxViewController)
         self.view.addSubview(rmParallaxViewController.view)
-        rmParallaxViewController.didMoveToParentViewController(self)
+        rmParallaxViewController.didMove(toParentViewController: self)
     }
 
-    override func prefersStatusBarHidden() -> Bool {
+    override func prefersStatusBarHidden() -> Bool
+    {
         return true
     }
-
 }
 
