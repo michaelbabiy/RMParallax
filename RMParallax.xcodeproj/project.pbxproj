@@ -12,20 +12,9 @@
 		1C04F3E51A760BED005C2DA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C04F3E31A760BED005C2DA7 /* Main.storyboard */; };
 		1C04F3E71A760BED005C2DA7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C04F3E61A760BED005C2DA7 /* Images.xcassets */; };
 		1C04F3EA1A760BED005C2DA7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C04F3E81A760BED005C2DA7 /* LaunchScreen.xib */; };
-		1C04F3F61A760BED005C2DA7 /* RMParallaxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C04F3F51A760BED005C2DA7 /* RMParallaxTests.swift */; };
 		1C04F4011A760C75005C2DA7 /* RMParallaxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C04F4001A760C75005C2DA7 /* RMParallaxItem.swift */; };
 		1C04F4031A760D2A005C2DA7 /* RMParallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C04F4021A760D2A005C2DA7 /* RMParallax.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		1C04F3F01A760BED005C2DA7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1C04F3D21A760BED005C2DA7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1C04F3D91A760BED005C2DA7;
-			remoteInfo = RMParallax;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1C04F3DA1A760BED005C2DA7 /* RMParallax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RMParallax.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,22 +24,12 @@
 		1C04F3E41A760BED005C2DA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1C04F3E61A760BED005C2DA7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1C04F3E91A760BED005C2DA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		1C04F3EF1A760BED005C2DA7 /* RMParallaxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMParallaxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1C04F3F41A760BED005C2DA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1C04F3F51A760BED005C2DA7 /* RMParallaxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMParallaxTests.swift; sourceTree = "<group>"; };
 		1C04F4001A760C75005C2DA7 /* RMParallaxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMParallaxItem.swift; sourceTree = "<group>"; };
 		1C04F4021A760D2A005C2DA7 /* RMParallax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMParallax.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1C04F3D71A760BED005C2DA7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1C04F3EC1A760BED005C2DA7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -64,7 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				1C04F3DC1A760BED005C2DA7 /* RMParallax */,
-				1C04F3F21A760BED005C2DA7 /* RMParallaxTests */,
 				1C04F3DB1A760BED005C2DA7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,7 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				1C04F3DA1A760BED005C2DA7 /* RMParallax.app */,
-				1C04F3EF1A760BED005C2DA7 /* RMParallaxTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,23 +73,6 @@
 				1C04F3DE1A760BED005C2DA7 /* Info.plist */,
 				1C04F3E81A760BED005C2DA7 /* LaunchScreen.xib */,
 				1C04F3E31A760BED005C2DA7 /* Main.storyboard */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1C04F3F21A760BED005C2DA7 /* RMParallaxTests */ = {
-			isa = PBXGroup;
-			children = (
-				1C04F3F51A760BED005C2DA7 /* RMParallaxTests.swift */,
-				1C04F3F31A760BED005C2DA7 /* Supporting Files */,
-			);
-			path = RMParallaxTests;
-			sourceTree = "<group>";
-		};
-		1C04F3F31A760BED005C2DA7 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				1C04F3F41A760BED005C2DA7 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -146,24 +106,6 @@
 			productReference = 1C04F3DA1A760BED005C2DA7 /* RMParallax.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1C04F3EE1A760BED005C2DA7 /* RMParallaxTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1C04F3FC1A760BED005C2DA7 /* Build configuration list for PBXNativeTarget "RMParallaxTests" */;
-			buildPhases = (
-				1C04F3EB1A760BED005C2DA7 /* Sources */,
-				1C04F3EC1A760BED005C2DA7 /* Frameworks */,
-				1C04F3ED1A760BED005C2DA7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1C04F3F11A760BED005C2DA7 /* PBXTargetDependency */,
-			);
-			name = RMParallaxTests;
-			productName = RMParallaxTests;
-			productReference = 1C04F3EF1A760BED005C2DA7 /* RMParallaxTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -177,12 +119,9 @@
 				TargetAttributes = {
 					1C04F3D91A760BED005C2DA7 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = VV4VQB3X2M;
+						DevelopmentTeamName = "Michael Babiy";
 						LastSwiftMigration = 0800;
-					};
-					1C04F3EE1A760BED005C2DA7 = {
-						CreatedOnToolsVersion = 6.1.1;
-						LastSwiftMigration = 0800;
-						TestTargetID = 1C04F3D91A760BED005C2DA7;
 					};
 				};
 			};
@@ -200,7 +139,6 @@
 			projectRoot = "";
 			targets = (
 				1C04F3D91A760BED005C2DA7 /* RMParallax */,
-				1C04F3EE1A760BED005C2DA7 /* RMParallaxTests */,
 			);
 		};
 /* End PBXProject section */
@@ -213,13 +151,6 @@
 				1C04F3E51A760BED005C2DA7 /* Main.storyboard in Resources */,
 				1C04F3EA1A760BED005C2DA7 /* LaunchScreen.xib in Resources */,
 				1C04F3E71A760BED005C2DA7 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1C04F3ED1A760BED005C2DA7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,23 +168,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1C04F3EB1A760BED005C2DA7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1C04F3F61A760BED005C2DA7 /* RMParallaxTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		1C04F3F11A760BED005C2DA7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1C04F3D91A760BED005C2DA7 /* RMParallax */;
-			targetProxy = 1C04F3F01A760BED005C2DA7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1C04F3E31A760BED005C2DA7 /* Main.storyboard */ = {
@@ -382,39 +297,6 @@
 			};
 			name = Release;
 		};
-		1C04F3FD1A760BED005C2DA7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = RMParallaxTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.michaelbabiy.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RMParallax.app/RMParallax";
-			};
-			name = Debug;
-		};
-		1C04F3FE1A760BED005C2DA7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = RMParallaxTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.michaelbabiy.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RMParallax.app/RMParallax";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -432,15 +314,6 @@
 			buildConfigurations = (
 				1C04F3FA1A760BED005C2DA7 /* Debug */,
 				1C04F3FB1A760BED005C2DA7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1C04F3FC1A760BED005C2DA7 /* Build configuration list for PBXNativeTarget "RMParallaxTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1C04F3FD1A760BED005C2DA7 /* Debug */,
-				1C04F3FE1A760BED005C2DA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

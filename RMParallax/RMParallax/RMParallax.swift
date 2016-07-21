@@ -110,7 +110,7 @@ class RMParallax : UIViewController, UIScrollViewDelegate
             
             let internalTextScrollView = UIScrollView(frame: CGRect(x: diff, y: 0.0, width: self.viewWidth - (diff * 2.0), height: self.view.frame.size.height))
             internalTextScrollView.isScrollEnabled = false
-            internalTextScrollView.backgroundColor = UIColor.clear()
+            internalTextScrollView.backgroundColor = UIColor.clear
             
             //
             
@@ -137,8 +137,8 @@ class RMParallax : UIViewController, UIScrollViewDelegate
             
             let textView = UITextView(frame: CGRect(x: 5.0, y: self.view.frame.size.height / 2.0, width: rect.size.width, height: rect.size.height))
             textView.text = item.text
-            textView.textColor = UIColor.white()
-            textView.backgroundColor = UIColor.clear()
+            textView.textColor = UIColor.white
+            textView.backgroundColor = UIColor.clear
             textView.isUserInteractionEnabled = false
             imageView.image = item.image
             textView.font = UIFont.systemFont(ofSize: 25.0)
