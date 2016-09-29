@@ -1,6 +1,6 @@
 // RMParallax
 //
-// Copyright (c) 2015 RMParallax
+// Copyright (c) 2016 RMParallax
 //
 // Created by Raphael Miller & Michael Babiy
 //
@@ -24,14 +24,55 @@
 
 import UIKit
 
-class RMParallaxItem
-{
-    var image: UIImage!
-    var text: String!
+extension RMController.Style {
+    var font: UIFont {
+        switch self {
+        default:
+            return .systemFont(ofSize: 25.0)
+        }
+    }
     
-    init(image: UIImage, text: String)
-    {
-        self.image = image
-        self.text = text
+    var viewOffsetMultiplier: CGFloat {
+        switch self {
+        default:
+            return 0.4
+        }
+    }
+    
+    var motionFrameOffset: CGFloat {
+        switch self {
+        default:
+            return 0.0
+        }
+    }
+    
+    var motionMagnitude: CGFloat {
+        switch self {
+        case .motion:
+            return 5.0
+        default:
+            return 0.0
+        }
+    }
+    
+    var textColor: UIColor {
+        switch self {
+        default:
+            return .white
+        }
+    }
+    
+    var textOffsetMultiplier: CGFloat {
+        switch self {
+        default:
+            return 0.8
+        }
+    }
+    
+    var textSpan: CGFloat {
+        switch self {
+        default:
+            return 300.0
+        }
     }
 }
