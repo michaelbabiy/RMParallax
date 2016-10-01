@@ -12,8 +12,9 @@
 		1C04F3E51A760BED005C2DA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C04F3E31A760BED005C2DA7 /* Main.storyboard */; };
 		1C04F3E71A760BED005C2DA7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C04F3E61A760BED005C2DA7 /* Images.xcassets */; };
 		1C04F3EA1A760BED005C2DA7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C04F3E81A760BED005C2DA7 /* LaunchScreen.xib */; };
-		1C04F4011A760C75005C2DA7 /* RMParallaxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C04F4001A760C75005C2DA7 /* RMParallaxItem.swift */; };
-		1C04F4031A760D2A005C2DA7 /* RMParallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C04F4021A760D2A005C2DA7 /* RMParallax.swift */; };
+		1C04F4011A760C75005C2DA7 /* RMItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C04F4001A760C75005C2DA7 /* RMItem.swift */; };
+		1C04F4031A760D2A005C2DA7 /* RMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C04F4021A760D2A005C2DA7 /* RMController.swift */; };
+		1C18ECC81D9C9605002A340C /* RMStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C18ECC71D9C9605002A340C /* RMStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +25,9 @@
 		1C04F3E41A760BED005C2DA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1C04F3E61A760BED005C2DA7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1C04F3E91A760BED005C2DA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		1C04F4001A760C75005C2DA7 /* RMParallaxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMParallaxItem.swift; sourceTree = "<group>"; };
-		1C04F4021A760D2A005C2DA7 /* RMParallax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMParallax.swift; sourceTree = "<group>"; };
+		1C04F4001A760C75005C2DA7 /* RMItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMItem.swift; sourceTree = "<group>"; };
+		1C04F4021A760D2A005C2DA7 /* RMController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMController.swift; sourceTree = "<group>"; };
+		1C18ECC71D9C9605002A340C /* RMStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +82,9 @@
 		1C04F3FF1A760C1B005C2DA7 /* RMParallax */ = {
 			isa = PBXGroup;
 			children = (
-				1C04F4001A760C75005C2DA7 /* RMParallaxItem.swift */,
-				1C04F4021A760D2A005C2DA7 /* RMParallax.swift */,
+				1C04F4021A760D2A005C2DA7 /* RMController.swift */,
+				1C04F4001A760C75005C2DA7 /* RMItem.swift */,
+				1C18ECC71D9C9605002A340C /* RMStyle.swift */,
 			);
 			path = RMParallax;
 			sourceTree = "<group>";
@@ -161,10 +164,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C18ECC81D9C9605002A340C /* RMStyle.swift in Sources */,
 				1C04F3E21A760BED005C2DA7 /* ViewController.swift in Sources */,
-				1C04F4011A760C75005C2DA7 /* RMParallaxItem.swift in Sources */,
+				1C04F4011A760C75005C2DA7 /* RMItem.swift in Sources */,
 				1C04F3E01A760BED005C2DA7 /* AppDelegate.swift in Sources */,
-				1C04F4031A760D2A005C2DA7 /* RMParallax.swift in Sources */,
+				1C04F4031A760D2A005C2DA7 /* RMController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +280,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VV4VQB3X2M;
 				INFOPLIST_FILE = RMParallax/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.michaelbabiy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -288,7 +294,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VV4VQB3X2M;
 				INFOPLIST_FILE = RMParallax/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.michaelbabiy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

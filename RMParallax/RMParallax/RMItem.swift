@@ -24,32 +24,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupParallaxController()
-    }
-    
-    func setupParallaxController() {
-        let item1 = RMItem(image: UIImage(named: "item1")!, text: "SHARE LIGHTBOXES WITH YOUR TEAM")
-        let item2 = RMItem(image: UIImage(named: "item2")!, text: "FOLLOW WORLD CLASS PHOTOGRAPHERS")
-        let item3 = RMItem(image: UIImage(named: "item3")!, text: "EXPLORE OUR COLLECTION BY CATEGORY")
-        let items = [item1, item2, item3]
-        
-        let introducing = RMController(with: items)
-        introducing.dismiss = {
-            introducing.view.removeFromSuperview()
-            introducing.removeFromParentViewController()
-        }
-        
-        // Adding parallax view controller.
-        addChildViewController(introducing)
-        view.addSubview(introducing.view)
-        introducing.didMove(toParentViewController: self)
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+struct RMItem {
+    var image: UIImage
+    var text: String
 }
-
